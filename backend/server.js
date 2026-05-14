@@ -6,7 +6,7 @@ const generateQuestions = require("./questions");
 const app = express();
 app.use(cors());
 app.use(express.json());
-const CONTRACT_ADDRESS = "0x3e3340412A0d3DaeF45D366b68380f424Dd4de46";
+const CONTRACT_ADDRESS = "0xd9112CcE89254fe42b85a99d7503Dcd0009d47ED";
 const ABI = [
   "function recordScore(address player, uint score) external",
   "function playerScores(address) view returns (uint)",
