@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Trivia</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0d0d0d; color: #fff; font-family: 'Courier New', monospace; min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    header { text-align: center; padding: 30px 0; border-bottom: 1px solid #333; }
+    header h1 { font-size: 2rem; color: #f0b90b; }
+    header p { color: #888; margin-top: 5px; }
+    #wallet-section { text-align: center; padding: 30px 0; }
+    #connect-btn { background: #f0b90b; color: #000; border: none; padding: 12px 30px; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    #connect-btn:hover { background: #d4a309; }
+    #wallet-address { margin-top: 10px; color: #888; font-size: 0.85rem; }
+    #game-section { display: none; }
+    #question-card { background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 30px; margin: 20px 0; }
+    #question-number { color: #f0b90b; font-size: 0.85rem; margin-bottom: 10px; }
+    #question-text { font-size: 1.2rem; margin-bottom: 25px; line-height: 1.5; }
+    .option-btn { display: block; width: 100%; background: #222; border: 1px solid #444; color: #fff; padding: 12px 20px; margin: 8px 0; cursor: pointer; border-radius: 5px; text-align: left; font-size: 1rem; font-family: 'Courier New', monospace; }
+    .option-btn:hover { border-color: #f0b90b; color: #f0b90b; }
+    .option-btn.selected { border-color: #f0b90b; background: #2a2400; color: #f0b90b; }
+    #progress-bar { background: #222; border-radius: 5px; height: 6px; margin: 15px 0; }
+    #progress-fill { background: #f0b90b; height: 6px; border-radius: 5px; transition: width 0.3s; }
+    #next-btn { background: #f0b90b; color: #000; border: none; padding: 12px 30px; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 5px; margin-top: 15px; display: none; }
+    #result-section { display: none; text-align: center; padding: 30px 0; }
+    #score-display { font-size: 3rem; color: #f0b90b; font-weight: bold; }
+    #result-message { color: #888; margin: 10px 0 20px; }
+    #mint-btn { background: #00d4aa; color: #000; border: none; padding: 12px 30px; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 5px; display: none; }
+    #leaderboard-section { margin-top: 40px; }
+    #leaderboard-section h2 { color: #f0b90b; margin-bottom: 15px; }
+    .lb-entry { display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; border: 1px solid #333; padding: 12px 20px; margin: 5px 0; border-radius: 5px; }
+    .lb-rank { color: #f0b90b; font-weight: bold; width: 30px; }
+    .lb-address { color: #888; font-size: 0.85rem; }
+    .lb-score { color: #fff; font-weight: bold; }
+    .lb-badge { color: #00d4aa; font-size: 0.8rem; }
+    #loading { text-align: center; padding: 20px; color: #888; display: none; }
+    #play-again-btn { background: #333; color: #fff; border: 1px solid #555; padding: 12px 30px; font-size: 1rem; cursor: pointer; border-radius: 5px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🪙 Crypto Trivia</h1>
+      <p>Test your crypto knowledge. Earn NFT badges. Climb the leaderboard.</p>
+    </header>
+
+    <div id="wallet-section">
+      <button id="connect-btn">Connect Wallet</button>
+      <p id="wallet-address"></p>
+    </div>
+
+    <div id="loading">⏳ Loading questions from AI...</div>
+
+    <div id="game-section">
+      <div id="progress-bar"><div id="progress-fill" style="width:0%"></div></div>
+      <div id="question-card">
+        <div id="question-number"></div>
+        <div id="question-text"></div>
+        <div id="options"></div>
+        <button id="next-btn">Next →</button>
+      </div>
+    </div>
+
+    <div id="result-section">
+      <div id="score-display"></div>
+      <div id="result-message"></div>
+      <button id="mint-btn">🏆 Mint NFT Badge</button>
+      <br/>
+      <button id="play-again-btn">Play Again</button>
+    </div>
+
+    <div id="leaderboard-section">
+      <h2>🏆 Leaderboard</h2>
+      <div id="leaderboard"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
